@@ -1,0 +1,33 @@
+Main File:
+
+Start Game:
+    make 2 players, turn = 1
+    decide who goes first
+
+    make board
+    set standard game setting (populate board array)
+        set type, location on board, and player they belong to
+
+
+while(!endCondition)
+    set up something to keep re-prompting user for valid location (have it return them to here)
+    if endCondition
+        quit()
+    user selects piece and end location
+    drawPath()
+    if isValidMove
+        save oldx, oldy = piece.x, piece.y
+        piece.move(new_x, new_y)
+        boardArray[oldx][oldy] = null
+        boardArray[piece.x][piece.y] = piece
+    increment turn
+
+
+
+
+1. Board size and shape (still cannot get hexagonal)
+2. Piece movement (OK)
+3. Piece capturing (***TO-DO***)
+4. Check/Checkmate(***TO-DO***)
+5. Game End (***TO-DO***)
+6. Who goes first (***TO-DO)
