@@ -15,7 +15,7 @@ public class KnightTests {
     public void knightMovementUp2Left1() throws Exception
     {
         Game game = new Game();
-        Piece knight = new Knight(4, 4, game.player1);
+        Piece knight = new Knight(4, 4, game.player2);
 
         game.gameBoard.boardArray[3][6] = null;
         game.gameBoard.movePiece(knight, 3, 6); //up 2, left 1
@@ -27,7 +27,7 @@ public class KnightTests {
     {
         Game game = new Game();
         game.gameBoard.boardArray[3][6] = null;
-        Piece knight = new Knight(3,6, game.player1);
+        Piece knight = new Knight(3,6, game.player2);
 
         game.gameBoard.movePiece(knight, 4, 4); //down 2, right 1
         assertEquals(knight, game.gameBoard.boardArray[4][4]);
@@ -37,7 +37,7 @@ public class KnightTests {
     public void knightMovementUp2Right1() throws Exception
     {
         Game game = new Game();
-        Piece knight = new Knight(4, 4, game.player1);
+        Piece knight = new Knight(4, 4, game.player2);
 
         game.gameBoard.boardArray[5][6] = null;
         game.gameBoard.movePiece(knight, 5, 6); //up 2, right 1
@@ -49,7 +49,7 @@ public class KnightTests {
     {
         Game game = new Game();
         game.gameBoard.boardArray[5][6] = null;
-        Piece knight = new Knight(5, 6, game.player1);
+        Piece knight = new Knight(5, 6, game.player2);
 
         game.gameBoard.movePiece(knight, 4, 4); //down 2, left 1
         assertEquals(knight, game.gameBoard.boardArray[4][4]);
@@ -59,7 +59,7 @@ public class KnightTests {
     public void knightMovementDown1Right2() throws Exception
     {
         Game game = new Game();
-        Piece knight = new Knight(4, 4, game.player1);
+        Piece knight = new Knight(4, 4, game.player2);
 
         game.gameBoard.movePiece(knight, 6, 3); //down 1, right2
         assertEquals(knight, game.gameBoard.boardArray[6][3]);
@@ -69,7 +69,7 @@ public class KnightTests {
     public void knightMovementDown1Left2() throws Exception
     {
         Game game = new Game();
-        Piece knight = new Knight(4, 4, game.player1);
+        Piece knight = new Knight(4, 4, game.player2);
 
         game.gameBoard.movePiece(knight, 2, 3); //down 1, left 2
         assertEquals(knight, game.gameBoard.boardArray[2][3]);
@@ -79,7 +79,7 @@ public class KnightTests {
     public void knightMovementUp1Left2() throws Exception
     {
         Game game = new Game();
-        Piece knight = new Knight(4, 4, game.player1);
+        Piece knight = new Knight(4, 4, game.player2);
 
         game.gameBoard.movePiece(knight, 2, 5); //up 1, left 2
         assertEquals(knight, game.gameBoard.boardArray[2][5]);
@@ -89,7 +89,7 @@ public class KnightTests {
     public void knightMovementUp1Right2() throws Exception
     {
         Game game = new Game();
-        Piece knight = new Knight(4, 4, game.player1);
+        Piece knight = new Knight(4, 4, game.player2);
 
         game.gameBoard.movePiece(knight, 6, 5); //up 1, right 2
         assertEquals(knight, game.gameBoard.boardArray[6][5]);
@@ -99,7 +99,7 @@ public class KnightTests {
     public void outOfBounds() throws Exception
     {
         Game game = new Game();
-        Piece knight = new Knight(4, 4, game.player1);
+        Piece knight = new Knight(4, 4, game.player2);
 
         game.gameBoard.movePiece(knight, 40,21);
     }
@@ -118,7 +118,7 @@ public class KnightTests {
     public void invalidOrigin() throws Exception
     {
         Game game = new Game();
-        Piece knight = new Knight(4, 4, game.player1);
+        Piece knight = new Knight(4, 4, game.player2);
 
         game.gameBoard.movePiece(knight, 4, 4);
     }

@@ -7,7 +7,7 @@ import Game.*;
  */
 public class Bishop extends Piece {
 
-    PieceTypes.Type type;
+    Type type;
 
     /**
      * The constructor for a Bishop.
@@ -17,14 +17,14 @@ public class Bishop extends Piece {
      */
     public Bishop(int x, int y, Player player) {
         super(x, y, player);
-        type = PieceTypes.Type.BISHOP;
+        type = Type.BISHOP;
     }
 
     /**
      * A function that gets the Piece type.
      * @return  an integer indicating the Piece type
      */
-    public PieceTypes.Type getType() {return PieceTypes.Type.BISHOP;}
+    public Type getType() {return Type.BISHOP;}
 
     /**
      * A function that determines whether the Bishop is moving diagonally.
@@ -58,7 +58,7 @@ public class Bishop extends Piece {
         if(finalY - startY < 0)
             y_dir = -1;
 
-        int [][] path = new int[2][pairs]; //populating array of pairs
+        int [][] path = new int[2][pairs - 1]; //populating array of pairs
 
         if(pairs - 1 > 0)
         {

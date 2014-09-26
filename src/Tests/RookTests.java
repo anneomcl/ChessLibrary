@@ -14,7 +14,7 @@ public class RookTests {
      public void verticalMovementUp() throws Exception
     {
         Game game = new Game();
-        Piece rook = new Rook(4, 4, game.player1);
+        Piece rook = new Rook(4, 4, game.player2);
 
         game.gameBoard.movePiece(rook, 4, 5); //up
         assertEquals(rook, game.gameBoard.boardArray[4][5]);
@@ -25,7 +25,7 @@ public class RookTests {
     public void verticalMovementDown() throws Exception
     {
         Game game = new Game();
-        Piece rook = new Rook(4, 4, game.player1);
+        Piece rook = new Rook(4, 4, game.player2);
 
         game.gameBoard.movePiece(rook, 4, 3); //down
         assertEquals(rook, game.gameBoard.boardArray[4][3]);
@@ -35,7 +35,7 @@ public class RookTests {
     public void horizontalMovementLeft() throws Exception
     {
         Game game = new Game();
-        Piece rook = new Rook(4, 4, game.player1);
+        Piece rook = new Rook(4, 4, game.player2);
 
         game.gameBoard.movePiece(rook, 3, 4); //left
         assertEquals(rook, game.gameBoard.boardArray[3][4]);
@@ -45,7 +45,7 @@ public class RookTests {
     public void horizontalMovementRight() throws Exception
     {
         Game game = new Game();
-        Piece rook = new Rook(4, 4, game.player1);
+        Piece rook = new Rook(4, 4, game.player2);
 
         game.gameBoard.movePiece(rook, 5, 4); //right
         assertEquals(rook, game.gameBoard.boardArray[5][4]);
@@ -56,7 +56,7 @@ public class RookTests {
     public void outOfBounds() throws Exception
     {
         Game game = new Game();
-        Piece rook = new Rook(4, 4, game.player1);
+        Piece rook = new Rook(4, 4, game.player2);
 
         game.gameBoard.movePiece(rook, -1, -1);
     }
@@ -74,7 +74,7 @@ public class RookTests {
     public void invalidOrigin() throws Exception
     {
         Game game = new Game();
-        Piece rook = new Rook(4, 4, game.player1);
+        Piece rook = new Rook(4, 4, game.player2);
 
         game.gameBoard.movePiece(rook, 4, 4);
     }

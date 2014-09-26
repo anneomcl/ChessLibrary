@@ -12,8 +12,8 @@ public class Board {
     public int height, width;
     public Piece[][] boardArray;
     public Game game; //Boards can access information about players, pieces and turns.
-    public Vector<Piece> p1Pieces = new Vector<Piece>(16);
-    public Vector<Piece> p2Pieces = new Vector<Piece>(16);
+    public Vector<Piece> whitePieces = new Vector<Piece>(16);
+    public Vector<Piece> blackPieces = new Vector<Piece>(16);
 
     /**
      * The constructor for a board.
@@ -40,33 +40,7 @@ public class Board {
     }
 
     /**
-     * Places Player 1's pieces on the board.
-     */
-    public void setPlayer1Pieces()
-    {
-        Piece[][] board = this.boardArray;
-
-        for(int i = 0; i < 8; i++)
-        {
-            Piece pawn = new Pawn(i, 1, this.game.player1);
-        }
-
-        Piece topRook = new Rook(0, 0, this.game.player1);
-        Piece bottomRook = new Rook(7, 0, this.game.player1);
-
-        Piece topKnight = new Knight(1, 0, this.game.player1);
-        Piece bottomKnight = new Knight(6, 0, this.game.player1);
-
-        Piece topBishop = new Bishop(2, 0, this.game.player1);
-        Piece bottomBishop = new Bishop(5, 0, this.game.player1);
-
-        Piece queen = new Queen(3, 0, this.game.player1);
-        King king = new King(4, 0, this.game.player1);
-        this.game.player1.playerKing =  king;
-    }
-
-    /**
-     * Places PLayer 2's pieces on the board.
+     * Places Player 2's pieces on the board.
      */
     public void setPlayer2Pieces()
     {
@@ -74,22 +48,46 @@ public class Board {
 
         for(int i = 0; i < 8; i++)
         {
-            Piece pawn = new Pawn(i, 6, this.game.player2);
+            Piece pawn = new Pawn(i, 1, this.game.player2);
+        }
+
+        Piece topRook = new Rook(0, 0, this.game.player2);
+        Piece bottomRook = new Rook(7, 0, this.game.player2);
+
+        Piece topKnight = new Knight(1, 0, this.game.player2);
+        Piece bottomKnight = new Knight(6, 0, this.game.player2);
+
+        Piece topBishop = new Bishop(2, 0, this.game.player2);
+        Piece bottomBishop = new Bishop(5, 0, this.game.player2);
+
+        Piece queen = new Queen(3, 0, this.game.player2);
+        King king = new King(4, 0, this.game.player2);
+    }
+
+    /**
+     * Places PLayer 1's pieces on the board. (WHITE)
+     */
+    public void setPlayer1Pieces()
+    {
+        Piece[][] board = this.boardArray;
+
+        for(int i = 0; i < 8; i++)
+        {
+            Piece pawn = new Pawn(i, 6, this.game.player1);
             board[i][6] = pawn;
         }
 
-        Piece rook = new Rook(0, 7, this.game.player2);
-        Piece rook2 = new Rook(7, 7, this.game.player2);
+        Piece rook = new Rook(0, 7, this.game.player1);
+        Piece rook2 = new Rook(7, 7, this.game.player1);
 
-        Piece knight = new Knight(1, 7, this.game.player2);
-        Piece knight2 = new Knight(6,7, this.game.player2);
+        Piece knight = new Knight(1, 7, this.game.player1);
+        Piece knight2 = new Knight(6,7, this.game.player1);
 
-        Piece bishop = new Bishop(2, 7, this.game.player2);
-        Piece bishop2 = new Bishop(5, 7, this.game.player2);
+        Piece bishop = new Bishop(2, 7, this.game.player1);
+        Piece bishop2 = new Bishop(5, 7, this.game.player1);
 
-        Piece queen = new Queen(3, 7, this.game.player2);
-        King king = new King(4, 7, this.game.player2);
-        this.game.player2.playerKing =  king;
+        Piece queen = new Queen(3, 7, this.game.player1);
+        King king = new King(4, 7, this.game.player1);
     }
 
     /**
@@ -99,10 +97,10 @@ public class Board {
     {
         for(int i = 0; i < 8; i++)
         {
-            p1Pieces.add(this.boardArray[i][0]);
-            p1Pieces.add(this.boardArray[i][1]);
-            p2Pieces.add(this.boardArray[i][6]);
-            p2Pieces.add(this.boardArray[i][7]);
+            whitePieces.add(this.boardArray[i][6]);
+            whitePieces.add(this.boardArray[i][7]);
+            blackPieces.add(this.boardArray[i][0]);
+            blackPieces.add(this.boardArray[i][1]);
         }
     }
 
@@ -120,18 +118,14 @@ public class Board {
         {
             if(isCapture(piece, finalX, finalY))
             {
+                game.capture = true;
                 boardArray[finalX][finalY] = null;
-                if(piece.getType() == PieceTypes.Type.ZERGLING)
-                {
-                    boardArray[piece.x][piece.y] = null;
-                    boardArray[piece.x][piece.y] = new Zergling(piece.x, piece.y, piece.player);
-                    piece.x = finalX;
-                    piece.y = finalY;
-                    boardArray[finalX][finalY] = piece;
-                }
+                if(piece.getType() == Type.ZERGLING) zergRush(piece, finalX, finalY);
             }
 
             setNewPieceLocation(piece, finalX, finalY);
+
+
         }
 
 
@@ -141,10 +135,26 @@ public class Board {
                 throw new InvalidMovementException();
             } catch (InvalidMovementException e) {
                 e.printStackTrace();
+                game.invalid = true;
             }
         }
 
         return;
+    }
+
+    /**
+     * A function to handle Zerglings.
+     * @param piece
+     * @param finalX
+     * @param finalY
+     */
+    public void zergRush(Piece piece, int finalX, int finalY)
+    {
+        boardArray[piece.x][piece.y] = null;
+        boardArray[piece.x][piece.y] = new Zergling(piece.x, piece.y, piece.player);
+        piece.x = finalX;
+        piece.y = finalY;
+        boardArray[finalX][finalY] = piece;
     }
 
     /**
@@ -193,11 +203,11 @@ public class Board {
      */
     protected boolean validLeaping(Piece piece, int[][] movePath)
     {
-        if(piece.getType() == PieceTypes.Type.KNIGHT) //knights can leap
+        if(piece.getType() == Type.KNIGHT) //knights can leap
             return true;
 
         //pawns only have a path under special circumstances. kings will never have a path
-        if(piece.getType() == PieceTypes.Type.PAWN || piece.getType() == PieceTypes.Type.KING)
+        if(piece.getType() == Type.PAWN || piece.getType() == Type.KING)
             return true;
 
         int pairs = movePath[0].length;
@@ -242,7 +252,7 @@ public class Board {
     protected boolean isValidEndPoint(Piece piece, int finalX, int finalY)
     {
         if((boardArray[finalX][finalY] == null)||((boardArray[finalX][finalY] != null)
-                && boardArray[finalX][finalY].player.playerNumber != piece.player.playerNumber))
+                && boardArray[finalX][finalY].player.playerColor != piece.player.playerColor))
         {
             return true;
         }
@@ -262,7 +272,8 @@ public class Board {
 
         if(boardArray[finalX][finalY]!= null && boardArray[finalX][finalY].player != piece.player)
         {
-
+            if(boardArray[finalX][finalY].getType() == Type.KING)
+                boardArray[finalX][finalY].player.isLoser = true;
             return true;
         }
 

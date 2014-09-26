@@ -11,22 +11,22 @@ import Game.*;
  */
 public class Zergling extends Piece {
 
-    PieceTypes.Type type;
+    Type type;
 
     public Zergling(int x, int y, Player player) {
         super(x, y, player);
-        type = PieceTypes.Type.ZERGLING;
+        type = Type.ZERGLING;
     }
 
-    public PieceTypes.Type getType()
+    public Type getType()
     {
-        return PieceTypes.Type.ZERGLING;
+        return Type.ZERGLING;
     }
 
     public boolean isValidPath(int finalX, int finalY)
     {
-        if((this.player.playerNumber == 1 && finalY - this.y > 0) ||
-                (this.player.playerNumber == 2 && finalY - this.y < 0))
+        if((this.player.playerColor == Color.WHITE && finalY - this.y > 0) ||
+                (this.player.playerColor == Color.BLACK && finalY - this.y < 0))
         {
             return true;
         }
@@ -44,7 +44,10 @@ public class Zergling extends Piece {
             for(int i = 0; i < pairs - 1; i++)
             {
                 path[0][i] = startX;
-                path[1][i] = startY + 1;
+                if(this.player == this.player.myGame.player1)
+                    path[1][i] = startY - 1;
+                if(this.player == this.player.myGame.player2)
+                    path[1][i] = startY + 1;
             }
         }
 

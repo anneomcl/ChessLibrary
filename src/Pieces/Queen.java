@@ -5,7 +5,7 @@ import Game.*;
  */
 public class Queen extends Piece {
 
-    PieceTypes.Type type;
+    Type type;
 
     /**
      * The constructor for a Queen.
@@ -16,16 +16,16 @@ public class Queen extends Piece {
     public Queen(int x, int y, Player player)
     {
         super(x, y, player);
-        type = PieceTypes.Type.QUEEN;
+        type = Type.QUEEN;
     }
 
     /**
      * A function that gets the Piece type.
      * @return  an integer indicating the Piece type
      */
-    public PieceTypes.Type getType()
+    public Type getType()
     {
-        return PieceTypes.Type.QUEEN;
+        return Type.QUEEN;
     }
 
     /**
@@ -81,8 +81,12 @@ public class Queen extends Piece {
             pairs = Math.abs(finalX - startX);
             if(finalX - startX < 0)
                 x_dir = -1;
+            else
+                x_dir = 1;
             if(finalY - startY < 0)
                 y_dir = -1;
+            else
+                y_dir = 1;
         }
 
         int [][] path = new int[2][pairs];

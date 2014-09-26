@@ -78,7 +78,7 @@ public class PawnTests {
     public void outOfBounds() throws Exception
     {
         Game game = new Game();
-        Piece pawn = new Pawn(4, 4, game.player1);
+        Piece pawn = new Pawn(4, 4, game.player2);
 
         game.gameBoard.movePiece(pawn, 40,21);
     }
@@ -87,7 +87,7 @@ public class PawnTests {
     public void invalidOrigin() throws Exception
     {
         Game game = new Game();
-        Piece pawn = new Pawn(4, 4, game.player1);
+        Piece pawn = new Pawn(4, 4, game.player2);
 
         game.gameBoard.movePiece(pawn, 4, 4);
     }

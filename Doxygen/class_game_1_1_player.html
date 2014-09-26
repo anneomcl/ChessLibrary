@@ -96,17 +96,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2ce71b2745f38b9243d95151c3bf0309"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_player.html#a2ce71b2745f38b9243d95151c3bf0309">Player</a> (int playerNumber, boolean goesFirst)</td></tr>
+<tr class="memitem:a2ce71b2745f38b9243d95151c3bf0309"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_player.html#a2ce71b2745f38b9243d95151c3bf0309">Player</a> (int playerColor, boolean goesFirst)</td></tr>
 <tr class="separator:a2ce71b2745f38b9243d95151c3bf0309"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa3dcb37dc172750e24653fc7e383ed6"><td class="memItemLeft" align="right" valign="top">Vector&lt; <a class="el" href="class_pieces_1_1_piece.html">Piece</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_player.html#aaa3dcb37dc172750e24653fc7e383ed6">getAllyPieces</a> (int playerNumber)</td></tr>
+<tr class="memitem:aaa3dcb37dc172750e24653fc7e383ed6"><td class="memItemLeft" align="right" valign="top">Vector&lt; <a class="el" href="class_pieces_1_1_piece.html">Piece</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_player.html#aaa3dcb37dc172750e24653fc7e383ed6">getAllyPieces</a> (int playerColor)</td></tr>
 <tr class="separator:aaa3dcb37dc172750e24653fc7e383ed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76937c3e1ee954eeb93ee815a73fae2a"><td class="memItemLeft" align="right" valign="top">Vector&lt; <a class="el" href="class_pieces_1_1_piece.html">Piece</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_player.html#a76937c3e1ee954eeb93ee815a73fae2a">getEnemyPieces</a> (int playerNumber)</td></tr>
+<tr class="memitem:a76937c3e1ee954eeb93ee815a73fae2a"><td class="memItemLeft" align="right" valign="top">Vector&lt; <a class="el" href="class_pieces_1_1_piece.html">Piece</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_1_1_player.html#a76937c3e1ee954eeb93ee815a73fae2a">getEnemyPieces</a> (int playerColor)</td></tr>
 <tr class="separator:a76937c3e1ee954eeb93ee815a73fae2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a91c9f509c11ee2c564922576a8998fa0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91c9f509c11ee2c564922576a8998fa0"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>playerNumber</b></td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>playerColor</b></td></tr>
 <tr class="separator:a91c9f509c11ee2c564922576a8998fa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa6d0860c673ee07b938c8f900423a02"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa6d0860c673ee07b938c8f900423a02"></a>
 boolean&#160;</td><td class="memItemRight" valign="bottom"><b>goesFirst</b></td></tr>
@@ -132,7 +132,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>isLoser</b> = fals
           <td class="memname">Game.Player.Player </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>playerNumber</em>, </td>
+          <td class="paramname"><em>playerColor</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -149,7 +149,7 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>isLoser</b> = fals
 </div><div class="memdoc">
 <p>Constructor for a <a class="el" href="class_game_1_1_player.html">Player</a>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">playerNumber</td><td></td></tr>
+    <tr><td class="paramname">playerColor</td><td></td></tr>
     <tr><td class="paramname">goesFirst</td><td></td></tr>
   </table>
   </dd>
@@ -166,14 +166,14 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>isLoser</b> = fals
           <td class="memname">Vector&lt;<a class="el" href="class_pieces_1_1_piece.html">Piece</a>&gt; Game.Player.getAllyPieces </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>playerNumber</em></td><td>)</td>
+          <td class="paramname"><em>playerColor</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Gets a list of the player's pieces. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">playerNumber</td><td>the <a class="el" href="class_game_1_1_player.html">Player</a>'s number </td></tr>
+    <tr><td class="paramname">playerColor</td><td>the <a class="el" href="class_game_1_1_player.html">Player</a>'s number </td></tr>
   </table>
   </dd>
 </dl>
@@ -189,14 +189,14 @@ boolean&#160;</td><td class="memItemRight" valign="bottom"><b>isLoser</b> = fals
           <td class="memname">Vector&lt;<a class="el" href="class_pieces_1_1_piece.html">Piece</a>&gt; Game.Player.getEnemyPieces </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>playerNumber</em></td><td>)</td>
+          <td class="paramname"><em>playerColor</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Gets a list of the enemy's pieces. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">playerNumber</td><td>the <a class="el" href="class_game_1_1_player.html">Player</a>'s number </td></tr>
+    <tr><td class="paramname">playerColor</td><td>the <a class="el" href="class_game_1_1_player.html">Player</a>'s number </td></tr>
   </table>
   </dd>
 </dl>

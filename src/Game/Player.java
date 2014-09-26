@@ -8,55 +8,56 @@ import java.util.Vector;
  */
 public class Player {
 
-    public int playerNumber;
+    public Color playerColor;
     public boolean goesFirst;
     public boolean isLoser = false;
     public Game myGame; //Players can access the board, the turn number, and the opponent's pieces.
-    public King playerKing;
+    public boolean isTurn = false;
+    public int score = 0;
 
     /**
      * Constructor for a Player.
-     * @param playerNumber
+     * @param playerColor
      * @param goesFirst
      */
-    public Player(int playerNumber, boolean goesFirst)
+    public Player(Color playerColor, boolean goesFirst)
     {
-        this.playerNumber = playerNumber;
+        this.playerColor = playerColor;
         this.goesFirst = goesFirst;
     }
 
     /**
      * Gets a list of the player's pieces.
-     * @param playerNumber  the Player's number
+     * @param playerColor  the Player's number
      * @return allyPieces  a vector of the player's pieces
      */
-    public Vector<Piece> getAllyPieces(int playerNumber)
+    public Vector<Piece> getAllyPieces(Color playerColor)
     {
         Vector<Piece> allyPieces;
 
-        if(playerNumber == 1)
-            allyPieces = myGame.gameBoard.p1Pieces;
+        if(playerColor == Color.WHITE)
+            allyPieces = myGame.gameBoard.whitePieces;
 
         else
-            allyPieces = myGame.gameBoard.p2Pieces;
+            allyPieces = myGame.gameBoard.blackPieces;
 
         return allyPieces;
     }
 
     /**
      * Gets a list of the enemy's pieces.
-     * @param playerNumber  the Player's number
+     * @param playerColor  the Player's number
      * @return enemyPieces  a vector of the enemy's pieces
      */
-    public Vector<Piece> getEnemyPieces(int playerNumber)
+    public Vector<Piece> getEnemyPieces(Color playerColor)
     {
         Vector<Piece> enemyPieces;
 
-        if(playerNumber == 1)
-            enemyPieces = myGame.gameBoard.p2Pieces;
+        if(playerColor == Color.WHITE)
+            enemyPieces = myGame.gameBoard.blackPieces;
 
         else
-            enemyPieces = myGame.gameBoard.p1Pieces;
+            enemyPieces = myGame.gameBoard.whitePieces;
 
         return enemyPieces;
 

@@ -20,9 +20,9 @@ public class KingTests {
             game.gameBoard.boardArray[i][6] = null;
         }
 
-        game.gameBoard.p2Pieces.removeAllElements();
+        game.gameBoard.blackPieces.removeAllElements();
 
-        Piece king = new King(4, 4, game.player1);
+        Piece king = new King(4, 4, game.player2);
         game.gameBoard.boardArray[4][4] = king;
 
         game.gameBoard.movePiece(king, 3, 3); //down-left
@@ -46,7 +46,7 @@ public class KingTests {
     public void cantMoveTwo() throws Exception
     {
         Game game = new Game();
-        Piece king = new King(4, 4, game.player1);
+        Piece king = new King(4, 4, game.player2);
         game.gameBoard.boardArray[4][4] = king;
 
         game.gameBoard.movePiece(king, 2, 4); //down-left
@@ -56,7 +56,7 @@ public class KingTests {
     public void outOfBounds() throws Exception
     {
         Game game = new Game();
-        Piece king = new King(4, 4, game.player1);
+        Piece king = new King(4, 4, game.player2);
         game.gameBoard.boardArray[4][4] = king;
 
         game.gameBoard.movePiece(king, 40,21);
@@ -66,7 +66,7 @@ public class KingTests {
     public void invalidOrigin() throws Exception
     {
         Game game = new Game();
-        Piece king = new King(4, 4, game.player1);
+        Piece king = new King(4, 4, game.player2);
         game.gameBoard.boardArray[4][4] = king;
 
         game.gameBoard.movePiece(king, 4, 4);

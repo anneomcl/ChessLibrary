@@ -8,16 +8,16 @@ import Game.*;
  */
 public class Princess extends Piece {
 
-    PieceTypes.Type type;
+    Type type;
 
     public Princess(int x, int y, Player player) {
         super(x, y, player);
-        type = PieceTypes.Type.PRINCESS;
+        type = Type.PRINCESS;
     }
 
-    public PieceTypes.Type getType()
+    public Type getType()
     {
-        return PieceTypes.Type.PRINCESS;
+        return Type.PRINCESS;
     }
 
     public boolean isValidPath(int finalX, int finalY)

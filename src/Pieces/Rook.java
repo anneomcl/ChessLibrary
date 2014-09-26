@@ -6,7 +6,7 @@ import Game.*;
  */
 public class Rook extends Piece {
 
-    PieceTypes.Type type;
+    Type type;
 
     /**
      * The constructor for a Rook.
@@ -17,16 +17,16 @@ public class Rook extends Piece {
     public Rook(int x, int y, Player player)
     {
         super(x, y, player);
-        type = PieceTypes.Type.ROOK;
+        type = Type.ROOK;
     }
 
     /**
      * A function that gets the Piece type.
      * @return  an integer indicating the Piece type
      */
-    public PieceTypes.Type getType()
+    public Type getType()
     {
-        return PieceTypes.Type.ROOK;
+        return Type.ROOK;
     }
 
     /**

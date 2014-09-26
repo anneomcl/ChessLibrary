@@ -14,7 +14,7 @@ public class BishopTests {
     @Test
     public void downLeftMovement() throws Exception {
         Game game = new Game();
-        Piece bishop = new Bishop(4, 4, game.player1);
+        Piece bishop = new Bishop(4, 4, game.player2);
 
         game.gameBoard.movePiece(bishop, 3, 3); //down-left
         assertEquals(bishop, game.gameBoard.boardArray[3][3]);
@@ -23,7 +23,7 @@ public class BishopTests {
     @Test
     public void upRightMovement() throws Exception {
         Game game = new Game();
-        Piece bishop = new Bishop(3, 3, game.player1);
+        Piece bishop = new Bishop(3, 3, game.player2);
 
         game.gameBoard.movePiece(bishop, 4, 4); //up-right
         assertEquals(bishop, game.gameBoard.boardArray[4][4]);
@@ -32,7 +32,7 @@ public class BishopTests {
     @Test
     public void downRightMovement() throws Exception {
         Game game = new Game();
-        Piece bishop = new Bishop(4, 4, game.player1);
+        Piece bishop = new Bishop(4, 4, game.player2);
 
         game.gameBoard.movePiece(bishop, 5, 3); //down-right
         assertEquals(bishop, game.gameBoard.boardArray[5][3]);
@@ -42,7 +42,7 @@ public class BishopTests {
     public void upLeftMovement() throws Exception
     {
         Game game = new Game();
-        Piece bishop = new Bishop(5, 3, game.player1);
+        Piece bishop = new Bishop(5, 3, game.player2);
 
         game.gameBoard.movePiece(bishop, 4, 4); //up-left
         assertEquals(bishop, game.gameBoard.boardArray[4][4]);

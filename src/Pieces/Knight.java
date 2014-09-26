@@ -6,7 +6,7 @@ import Game.*;
  */
 public class Knight extends Piece {
 
-   PieceTypes.Type type;
+   Type type;
 
     /**
      * The constructor for a Knight.
@@ -17,16 +17,16 @@ public class Knight extends Piece {
     public Knight(int x, int y, Player player)
     {
         super(x, y, player);
-        type = PieceTypes.Type.KNIGHT;
+        type = Type.KNIGHT;
     }
 
     /**
      * A function that gets the Piece type.
      * @return  an integer indicating the Piece type
      */
-    public PieceTypes.Type getType()
+    public Type getType()
     {
-        return PieceTypes.Type.KNIGHT;
+        return Type.KNIGHT;
     }
 
     /**

@@ -1,0 +1,13 @@
+Assignment 1.1 Improvements
+- Make assets as constants, make function to populate the GUI board
+- Clean up GUI board in general
+- king tests
+- say return (cond) instead of (cond ... return (bool)
+
+
+
+
+- Make checkmate work, test
+	- Make new board when checking for check/checkmate when pieces move at diff squares
+- instead of deleting king in canKillKing, temporarily move it, move enemy
+	then move king back to original position

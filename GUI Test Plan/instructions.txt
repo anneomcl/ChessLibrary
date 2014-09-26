@@ -1,0 +1,12 @@
+GUI Test Instructions:
+
+0) The board should look like initialBoard.png
+1) Move white pawn at 0, 1 to 0, 3 (pawnFirstMove.png)
+2) Move black pawn at 4, 6 to 4, 4 (pawn2FirstMove.png)
+3) Move white knight at 1, 0 to 2, 2 (knightMove.png)
+4) Move black bishop at 4, 6 to 1, 3 (bishopMove.png)
+5) Move white rook at 0, 0 to 0, 2 (moveRook.png)
+6) Move black queen at 3, 7 to 6, 4 (queenMove.png)
+7) Move black queen at 6, 4 to 6, 1 (queenCapture.png)
+8) Move white bishop at 5, 0 to 6, 1 (bishopCapture.png
+9) Move black king at 4, 7 to 5, 7 (kingMove.png)

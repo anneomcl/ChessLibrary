@@ -7,7 +7,7 @@ import java.util.Vector;
  */
 public class King extends Piece {
 
-    PieceTypes.Type type;
+    Type type;
     public boolean kingInCheck = false;
 
     /**
@@ -19,16 +19,16 @@ public class King extends Piece {
     public King(int x, int y, Player player)
     {
         super(x, y, player);
-        type = PieceTypes.Type.KING;
+        type = Type.KING;
     }
 
     /**
      * A function that gets the Piece type.
      * @return  an integer indicating the Piece type
      */
-    public PieceTypes.Type getType()
+    public Type getType()
     {
-        return PieceTypes.Type.KING;
+        return Type.KING;
     }
 
     /**
@@ -46,8 +46,8 @@ public class King extends Piece {
             return false;
         }*/
 
-        if(isValidPathHelper(finalX, finalY) && !kingInCheck
-                && !isInCheck(finalX, finalY))
+        if(isValidPathHelper(finalX, finalY) /*&& !kingInCheck
+                && !isInCheck(finalX, finalY)*/)
         {
             return true;
         }
@@ -79,19 +79,19 @@ public class King extends Piece {
      */
     public boolean isInCheckmate()
     {
-        Vector<Piece> enemies = this.player.getEnemyPieces(this.player.playerNumber);
+        Vector<Piece> enemies = this.player.getEnemyPieces(this.player.playerColor);
         Vector<Piece> attackingEnemies = new Vector<Piece>(1);
 
         for(int i = 0; i < enemies.size(); i++)
         {
-            if(enemies.elementAt(i).getType() != PieceTypes.Type.KING && canKillKing(enemies.elementAt(i), this.x, this.y))
+            if(enemies.elementAt(i).getType() != Type.KING && canKillKing(enemies.elementAt(i), this.x, this.y))
             {
                 kingInCheck = true;
                 /*
                  * if there's more than one enemy that can kill the king in a given space,
                  * an ally cannot defend against both, and it cannot defend against knights.
                  */
-                if(attackingEnemies.size() < 2 && enemies.elementAt(i).getType() != PieceTypes.Type.KNIGHT)
+                if(attackingEnemies.size() < 2 && enemies.elementAt(i).getType() != Type.KNIGHT)
                 {
                     //keep a list of attacking enemies to potentially require an ally to defend against
                     attackingEnemies.add(enemies.elementAt(i));
@@ -137,13 +137,13 @@ public class King extends Piece {
             int[][] enemyPath = enemy.drawPath(enemy.x, enemy.y, this.x, this.y);
             int enemyPathSize = enemyPath[0].length;
 
-            Vector<Piece> allies = this.player.getAllyPieces(this.player.playerNumber);
+            Vector<Piece> allies = this.player.getAllyPieces(this.player.playerColor);
 
             for(int i = 0; i < allies.size(); i++)
             {
                 for(int j = 0; j < enemyPathSize; j++)
                 {
-                    if(allies.get(i).getType() != PieceTypes.Type.KING &&
+                    if(allies.get(i).getType() != Type.KING &&
                             (this.player.myGame.gameBoard.isValidMove(allies.get(i), enemyPath[0][j], enemyPath[1][j]) &&
                             allies.get(i).isValidPath(enemyPath[0][j], enemyPath[1][j])) ||
                             (this.player.myGame.gameBoard.isValidMove(allies.get(i), enemy.x, enemy.y) &&
@@ -188,7 +188,7 @@ public class King extends Piece {
      */
     public  boolean isInCheck(int x, int y)
     {
-        Vector<Piece> enemies = this.player.getEnemyPieces(this.player.playerNumber);
+        Vector<Piece> enemies = this.player.getEnemyPieces(this.player.playerColor);
 
         for(int i = 0; i < enemies.size(); i++)
         {
@@ -213,7 +213,7 @@ public class King extends Piece {
         Board board = enemy.player.myGame.gameBoard;
 
         //pawns can only kill king if there is a piece to capture, so must consider it while king is in place
-        if(enemy.getType() == PieceTypes.Type.PAWN && (board.isValidMove(enemy, x, y) && enemy.isValidPath(x, y)))
+        if(enemy.getType() == Type.PAWN && (board.isValidMove(enemy, x, y) && enemy.isValidPath(x, y)))
         {
             return true;
         }
@@ -230,14 +230,12 @@ public class King extends Piece {
                 && enemy.isValidPath(x, y))
         {
             King new_king = new King(kingX, kingY, player);
-            player.playerKing = new_king;
             return true;
         }
 
         else
         {
             King new_king = new King(kingX, kingY, player);
-            player.playerKing = new_king;
             return false;
         }
     }

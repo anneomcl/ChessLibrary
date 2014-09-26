@@ -44,5 +44,5 @@ public abstract class Piece {
      * A function that returns the type of a Piece.
      * @return  an integer indicating the Piece type (as defined above)
      */
-    public abstract PieceTypes.Type getType();
+    public abstract Type getType();
 }

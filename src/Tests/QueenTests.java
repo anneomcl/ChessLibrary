@@ -16,7 +16,7 @@ public class QueenTests {
     public void verticalMovementUp() throws Exception
     {
         Game game = new Game();
-        Piece queen = new Queen(4, 4, game.player1);
+        Piece queen = new Queen(4, 4, game.player2);
 
         game.gameBoard.movePiece(queen, 4, 5); //up
         assertEquals(queen, game.gameBoard.boardArray[4][5]);
@@ -26,7 +26,7 @@ public class QueenTests {
     public void verticalMovementDown() throws Exception
     {
         Game game = new Game();
-        Piece queen = new Queen(4, 4, game.player1);
+        Piece queen = new Queen(4, 4, game.player2);
 
         game.gameBoard.movePiece(queen, 4, 3); //down
         assertEquals(queen, game.gameBoard.boardArray[4][3]);
@@ -36,7 +36,7 @@ public class QueenTests {
     public void horizontalMovementLeft() throws Exception
     {
         Game game = new Game();
-        Piece queen = new Queen(4, 4, game.player1);
+        Piece queen = new Queen(4, 4, game.player2);
 
         game.gameBoard.movePiece(queen, 3, 4); //left
         assertEquals(queen, game.gameBoard.boardArray[3][4]);
@@ -46,7 +46,7 @@ public class QueenTests {
     public void horizontalMovementRight() throws Exception
     {
         Game game = new Game();
-        Piece queen = new Queen(4, 4, game.player1);
+        Piece queen = new Queen(4, 4, game.player2);
 
         game.gameBoard.movePiece(queen, 5, 4); //right
         assertEquals(queen, game.gameBoard.boardArray[5][4]);
@@ -56,7 +56,7 @@ public class QueenTests {
     public void downLeftMovement() throws Exception
     {
         Game game = new Game();
-        Piece queen = new Queen(4, 4, game.player1);
+        Piece queen = new Queen(4, 4, game.player2);
 
         game.gameBoard.movePiece(queen, 3, 3); //down-left
         assertEquals(queen, game.gameBoard.boardArray[3][3]);
@@ -66,7 +66,7 @@ public class QueenTests {
     public void upRightMovement() throws Exception
     {
         Game game = new Game();
-        Piece queen = new Queen(3, 3, game.player1);
+        Piece queen = new Queen(3, 3, game.player2);
 
         game.gameBoard.movePiece(queen, 4, 4); //up-right
         assertEquals(queen, game.gameBoard.boardArray[4][4]);
@@ -76,7 +76,7 @@ public class QueenTests {
     public void downRightMovement() throws Exception
     {
         Game game = new Game();
-        Piece queen = new Queen(4, 4, game.player1);
+        Piece queen = new Queen(4, 4, game.player2);
 
         game.gameBoard.movePiece(queen, 5, 3); //down-right
         assertEquals(queen, game.gameBoard.boardArray[5][3]);
@@ -86,7 +86,7 @@ public class QueenTests {
     public void upLeftMovement() throws Exception
     {
         Game game = new Game();
-        Piece queen = new Queen(5, 3, game.player1);
+        Piece queen = new Queen(5, 3, game.player2);
 
         game.gameBoard.movePiece(queen, 4, 4); //up-left
         assertEquals(queen, game.gameBoard.boardArray[4][4]);
@@ -96,7 +96,7 @@ public class QueenTests {
     public void outOfBounds() throws Exception
     {
         Game game = new Game();
-        Piece queen = new Queen(4, 4, game.player1);
+        Piece queen = new Queen(4, 4, game.player2);
 
         game.gameBoard.movePiece(queen, -1, -1);
     }
@@ -114,7 +114,7 @@ public class QueenTests {
     public void invalidOrigin() throws Exception
     {
         Game game = new Game();
-        Piece queen = new Queen(4, 4, game.player1);
+        Piece queen = new Queen(4, 4, game.player2);
 
         game.gameBoard.movePiece(queen, 4, 4);
     }

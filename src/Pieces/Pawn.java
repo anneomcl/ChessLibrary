@@ -6,7 +6,7 @@ import Game.*;
  */
 public class Pawn extends Piece {
 
-    PieceTypes.Type type;
+    Type type;
 
     /**
      * The constructor for a Pawn.
@@ -17,16 +17,16 @@ public class Pawn extends Piece {
     public Pawn(int x, int y, Player player)
     {
         super(x, y, player);
-        type = PieceTypes.Type.PAWN;
+        type = Type.PAWN;
     }
 
     /**
      * A function that gets the Piece type.
      * @return  an integer indicating the Piece type
      */
-    public PieceTypes.Type getType()
+    public Type getType()
     {
-        return PieceTypes.Type.PAWN;
+        return Type.PAWN;
     }
 
     /**
@@ -43,11 +43,11 @@ public class Pawn extends Piece {
             return true;
 
             //checks if pawn is moving on a diagonal, if it is moving only one space, and if there is an enemy in that space
-        else if(pawnCanCapture(finalX, finalY))
+        if(pawnCanCapture(finalX, finalY))
             return true;
 
             //checks if pawn is moving one space forward, does not let it move forward unless space is empty
-        else if(pawnCanMoveForward(finalX, finalY))
+        if(pawnCanMoveForward(finalX, finalY))
             return true;
 
         else
@@ -70,8 +70,8 @@ public class Pawn extends Piece {
         if((abs_Y_diff == 2)
                 &&(this.player.myGame.turn == 1 || this.player.myGame.turn == 2)
                 &&(board[finalX][finalY] == null)
-                &&((this.player.playerNumber == 1 && board[this.x][this.y + 1] == null)
-                    ||(this.player.playerNumber == 2 && board[this.x][this.y - 1] == null)))
+                &&((this.player.playerColor == Color.WHITE && board[this.x][this.y - 1] == null)
+                    ||(this.player.playerColor == Color.BLACK && board[this.x][this.y + 1] == null)))
         {
             return true;
         }
@@ -90,16 +90,17 @@ public class Pawn extends Piece {
     {
         int abs_X_diff = Math.abs(finalX - this.x);
         int abs_Y_diff = Math.abs(finalY - this.y);
+        int Y_diff = (finalY - this.y);
         Piece[][] board = this.player.myGame.gameBoard.boardArray;
 
         if((abs_X_diff == abs_Y_diff) && (abs_Y_diff == 1))
         {
-            if(this.player.playerNumber == 1 && ((board[finalX][finalY] != null
-                    && board[finalX][finalY].player.playerNumber == 2)))
+            if(this.player.playerColor == Color.WHITE && ((board[finalX][finalY] != null
+                    && board[finalX][finalY].player.playerColor == Color.BLACK)) && Y_diff < 0)
                 return true;
 
-            if(this.player.playerNumber == 1 && ((board[finalX][finalY] != null
-                    && board[finalX][finalY].player.playerNumber == 2)))
+            if(this.player.playerColor == Color.BLACK && ((board[finalX][finalY] != null
+                    && board[finalX][finalY].player.playerColor == Color.WHITE)) && Y_diff > 0)
                 return true;
         }
 
@@ -120,8 +121,8 @@ public class Pawn extends Piece {
         int Y_diff = finalY - this.y;
         Piece[][] board = this.player.myGame.gameBoard.boardArray;
 
-        if(((this.player.playerNumber == 1 && Y_diff > 0 && abs_Y_diff == 1 ) ||
-                (this.player.playerNumber == 2 && Y_diff < 0 && abs_Y_diff == 1)) &&
+        if(((this.player.playerColor == Color.WHITE && Y_diff < 0 && abs_Y_diff == 1 ) ||
+                (this.player.playerColor == Color.BLACK && Y_diff > 0 && abs_Y_diff == 1)) &&
                 board[finalX][finalY] == null && this.x == finalX)
         {
             return true;
